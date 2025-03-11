@@ -72,12 +72,13 @@ export default function ArticleInfo(props) {
                 href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
                 passHref
                 className='pl-1 mr-2 border-b border-dashed cursor-pointer hover:text-gray-700 dark:hover:text-gray-200 dark:border-gray-500'>
-                {post?.publishDay}
+                {`${formatDateFmt(post?.publishDate, 'yyyy-MM-dd hh:mm:ss')}`}
               </Link>
             </span>
             <span className='mr-2'>|</span>
             <span className='mx-2 dark:text-gray-500'>
-              {locale.COMMON.LAST_EDITED_TIME}: {post?.lastEditedDay}
+              {locale.COMMON.LAST_EDITED_TIME}:{' '}
+              {`${formatDateFmt(post?.lastEditedDay, 'yyyy-MM-dd hh:mm:ss')}`}
             </span>
             <span className='mr-2'>|</span>
             <span className='hidden mr-2 font-light busuanzi_container_page_pv'>
