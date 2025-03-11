@@ -35,7 +35,7 @@ export default function ArticleInfo(props) {
             <span>
               {' '}
               <i className='fa-regular fa-clock'></i>{' '}
-              {`${formatDateFmt(post?.publishDate, 'yyyy-MM-dd hh:mm:ss')}`}
+              {`${formatDateFmt(post?.publishDate, 'yyyy-MM-dd')}`}
             </span>
             {post?.category && (
               <span>
