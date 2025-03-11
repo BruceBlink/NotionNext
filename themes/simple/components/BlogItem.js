@@ -18,18 +18,18 @@ export const BlogItem = props => {
   return (
     <div
       key={post.id}
-      className='h-42 my-6 pb-12 border-b dark:border-gray-800'>
+      className='pb-12 my-6 border-b h-42 dark:border-gray-800'>
       {/* 文章标题 */}
 
       <div className='flex'>
-        <div className='article-cover h-full'>
+        <div className='h-full article-cover'>
           {/* 图片封面 */}
           {showPageCover && (
-            <div className='overflow-hidden mr-2 w-56 h-full'>
+            <div className='w-56 h-full mr-2 overflow-hidden'>
               <Link href={post.href} passHref legacyBehavior>
                 <LazyImage
                   src={post?.pageCoverThumbnail}
-                  className='w-56 h-full object-cover object-center group-hover:scale-110 duration-500'
+                  className='object-cover object-center w-56 h-full duration-500 group-hover:scale-110'
                 />
               </Link>
             </div>
@@ -40,7 +40,7 @@ export const BlogItem = props => {
           <h2 className='mb-2'>
             <Link
               href={post.href}
-              className='blog-item-title font-bold text-black text-2xl menu-link'>
+              className='text-2xl font-bold text-black blog-item-title menu-link'>
               {siteConfig('POST_TITLE_ICON') && (
                 <NotionIcon icon={post.pageIcon} />
               )}
@@ -49,22 +49,23 @@ export const BlogItem = props => {
           </h2>
 
           {/* 文章信息 */}
-          <header className='mb-5 text-md text-gray-700 dark:text-gray-300 flex-wrap flex leading-6'>
+          <header className='flex flex-wrap mb-5 leading-6 text-gray-700 text-md dark:text-gray-300'>
             <div className='space-x-2'>
               <span>
                 {' '}
                 <a
                   href={siteConfig('SIMPLE_AUTHOR_LINK', null, CONFIG)}
-                  className='p-1 hover:text-red-400 transition-all duration-200'>
+                  className='p-1 transition-all duration-200 hover:text-red-400'>
                   <i className='fa-regular fa-user'></i> {siteConfig('AUTHOR')}
                 </a>
               </span>
               <span>
                 <Link
-                  className='p-1 hover:text-red-400 transition-all duration-200'
+                  className='p-1 transition-all duration-200 hover:text-red-400'
                   href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}>
                   <i className='fa-regular fa-clock' />{' '}
                   {post.date?.start_date || post.createdTime}
+                  {console.log(post)}
                 </Link>
               </span>
               <span>
@@ -76,7 +77,7 @@ export const BlogItem = props => {
               {post.category && (
                 <Link href={`/category/${post.category}`} className='p-1'>
                   {' '}
-                  <span className='hover:text-red-400 transition-all duration-200'>
+                  <span className='transition-all duration-200 hover:text-red-400'>
                     <i className='fa-regular fa-folder mr-0.5' />
                     {post.category}
                   </span>
@@ -88,14 +89,14 @@ export const BlogItem = props => {
                   <Link
                     key={t}
                     href={`/tag/${t}`}
-                    className=' hover:text-red-400 transition-all duration-200'>
+                    className='transition-all duration-200 hover:text-red-400'>
                     <span> /{t}</span>
                   </Link>
                 ))}
             </div>
           </header>
 
-          <main className='text-gray-700 dark:text-gray-300 leading-normal mb-6'>
+          <main className='mb-6 leading-normal text-gray-700 dark:text-gray-300'>
             {!showPreview && (
               <>
                 {post.summary}
@@ -103,9 +104,9 @@ export const BlogItem = props => {
               </>
             )}
             {showPreview && post?.blockMap && (
-              <div className='overflow-ellipsis truncate'>
+              <div className='truncate overflow-ellipsis'>
                 <NotionPage post={post} />
-                <hr className='border-dashed py-4' />
+                <hr className='py-4 border-dashed' />
               </div>
             )}
           </main>
@@ -115,9 +116,9 @@ export const BlogItem = props => {
       <div className='block'>
         <Link
           href={post.href}
-          className='inline-block rounded-sm text-blue-600 dark:text-blue-300  text-xs dark:border-gray-800 border hover:text-red-400 transition-all duration-200 hover:border-red-300 h-9 leading-8 px-5'>
+          className='inline-block px-5 text-xs leading-8 text-blue-600 transition-all duration-200 border rounded-sm dark:text-blue-300 dark:border-gray-800 hover:text-red-400 hover:border-red-300 h-9'>
           Continue Reading{' '}
-          <i className='fa-solid fa-angle-right align-middle'></i>
+          <i className='align-middle fa-solid fa-angle-right'></i>
         </Link>
       </div>
     </div>
