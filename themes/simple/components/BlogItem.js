@@ -65,7 +65,6 @@ export const BlogItem = props => {
                   href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}>
                   <i className='fa-regular fa-clock' />{' '}
                   {post.date?.start_date || post.createdTime}
-                  {console.log(post)}
                 </Link>
               </span>
               <span>
